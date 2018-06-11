@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 int qtd = getQtd();
                 double valor = 0;
                 int valor_int;
-                if(qtd < 1) {
+                if(qtd < 2) {
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.s_min, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, -100);
                     toast.show();
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                             valor -= valor;
                     }
                     valor *= qtd;
-                    valor_int = (int)Math.floor(valor);
+                    valor_int = (int)Math.ceil(valor);
                     textRes.setText(String.valueOf(valor_int));
                 }
             }
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try{
-                    Thread.sleep(2400);
+                    Thread.sleep(1700);
                 } catch (Exception e) {
                     System.out.print(e.getMessage());
                 }
