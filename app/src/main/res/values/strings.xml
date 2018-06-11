@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Random Monkey</string>
+    <string name="sb_go">GO</string>
+    <string name="s_aviso">O que você quer de mim, macaquinho estúpido?</string>
+    <string name="s_min">Valor mínimo para sorteio: 1!</string>
+    <string name="sb_m1">-1</string>
+    <string name="sb_p1">+1</string>
+    <string name="sb_m10">-10</string>
+    <string name="sb_p10">+10</string>
+    <string name="zero">0</string>
+    <string name="loading">Macaco tá pensando…</string>
+    <string name="sobre">Sobre</string>
+    <string name="sobre_texto">
+        Versão 1.2
+        \n\nEduardo Galvani Massino
+        \n\nCursa Matemática Aplicada, no IME, na Universidade de São Paulo
+        \n\nMudanças na versão 1.2:
+        \n\nUtilizando o modelo Normal Padrão nos sorteios.
+    </string>
+    <string name="sobre_tip">Macaquinho amestrado</string>
+</resources>
