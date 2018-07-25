@@ -17,6 +17,7 @@ public class SobreActivity extends AppCompatActivity {
         toast.setGravity(Gravity.CENTER, 0, 200);
         toast.show();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.sobre);
     }
 
     @Override

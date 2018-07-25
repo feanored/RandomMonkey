@@ -10,12 +10,32 @@
     <string name="zero">0</string>
     <string name="loading">Macaco tá pensando…</string>
     <string name="sobre">Sobre</string>
+    <string name="configs">Opções</string>
     <string name="sobre_texto">
-        Versão 1.2
+        Versão 1.5
         \n\nEduardo Galvani Massino
         \n\nCursando Matemática Aplicada, no IME, na Universidade de São Paulo
-        \n\nMudanças na versão 1.2:
-        \nUtilizando o modelo Normal Padrão nos sorteios.
     </string>
-    <string name="sobre_tip">Macaquinho amestrado</string>
+    <string name="sobre_changes">
+        \n\nMudanças na versão 1.5:
+        \n\t Criada tela de configurações:
+        \n\t\t- Escolha do modelo de distribuição de probabilidade, Normal Padrão ou Uniforme Discreto;
+        \n\t\t- Escolha do tempo que o macaco pensa para sortear os números.
+        \n\t Salvando valores do parâmetro e do último sorteio ao fechar o App.
+
+        \n\nMudanças na versão 1.2:
+        \n\t Utilizando o modelo Normal Padrão nos sorteios.
+    </string>
+    <string name="sobre_tip">Sobre Bogios e Sagüis</string>
+    <string name="configs_tip">Are you an Ape?</string>
+    <string name="config_tipo">Distribuição de probabilidade</string>
+    <string name="config_tempo">Tempo para o macaco pensar</string>
+    <string name="config_tempo_valor">4 segundos</string>
+    <string name="mod_unif">Uniforme Discreta</string>
+    <string name="mod_normal">Normal Padrão</string>
+    <string name="opcoes">OPCOES</string>
+    <string name="txt_tempo_0">Sorteio imediato!</string>
+    <string name="txt_tempo_1">1 segundo</string>
+    <string name="txt_tempo">%.1f segundos</string>
+
 </resources>
