@@ -13,11 +13,11 @@ public class SobreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sobre);
-        Toast toast = Toast.makeText(getApplicationContext(), R.string.sobre_tip, Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 200);
-        toast.show();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.sobre);
+        Toast toast = Toast.makeText(getApplicationContext(), R.string.sobre_tip, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 200);
+        toast.show();
     }
 
     @Override

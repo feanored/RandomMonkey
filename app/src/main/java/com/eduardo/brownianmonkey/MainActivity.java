@@ -6,22 +6,27 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    Button bm1, bp1, bm10, bp10, bgo;
+    Button bm, bp, bgo;
     EditText qtd;
     TextView textRes, textLoad;
     SharedPreferences configs;
+    SeekBar seekBar;
+    final int LIMITE = 1000000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +41,22 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
 
         // Registrando elementos
-        bm1 = findViewById(R.id.bm1);
-        bp1 = findViewById(R.id.bp1);
-        bm10 = findViewById(R.id.bm10);
-        bp10 = findViewById(R.id.bp10);
+        bm = findViewById(R.id.bm1);
+        bp = findViewById(R.id.bp10);
         bgo = findViewById(R.id.bgo);
         qtd = findViewById(R.id.qtde);
         textRes = findViewById(R.id.textRes);
         textLoad = findViewById(R.id.textLoad);
+        seekBar = findViewById(R.id.seekBar);
 
-        // recuperando valores para sorteio da configuração
+        // recuperando valores das configurações
         qtd.setText(String.valueOf(configs.getInt("qtde", 0)));
         textRes.setText(String.valueOf(configs.getInt("sorteio", 0)));
+        int passo = configs.getInt("step", 0);
+        seekBar.setProgress(passo);
+        passo = (int) Math.pow(10, passo);
+        bm.setText(String.format(getString(R.string.sb_menos), passo));
+        bp.setText(String.format(getString(R.string.sb_mais), passo));
 
         // Eventos
         bgo.setOnClickListener(new View.OnClickListener() {
@@ -57,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
                 int valor_int = 0;
                 String modelo = configs.getString("modelo", getString(R.string.mod_unif));
                 if(qtd < 2) {
-                    Toast toast = Toast.makeText(getApplicationContext(), R.string.s_min, Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0, -100);
-                    toast.show();
+                    aviso(R.string.s_min);
                 } else {
+                    // valida qtde
+                    setQtd(0);
                     sorteio();
                     // MODELO UNIFORME NO INTERVALO
                     if (modelo.equals(getString(R.string.mod_unif))){
@@ -78,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
                         valor *= qtd;
                         valor_int = (int)Math.ceil(valor);
                     }
+                    if (valor_int >= LIMITE)
+                        valor_int = LIMITE - 1;
                     textRes.setText(String.valueOf(valor_int));
                     // salvando nas configurações
                     SharedPreferences.Editor editor = configs.edit();
@@ -86,26 +97,59 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        bm1.setOnClickListener(new View.OnClickListener() {
+        bm.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                setQtd(-1);
+                int passo = configs.getInt("step", 0);
+                passo = (int) Math.pow(10, passo);
+                setQtd(-passo);
             }
         });
-        bp1.setOnClickListener(new View.OnClickListener() {
+        bp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                setQtd(1);
+                int passo = configs.getInt("step", 0);
+                passo = (int) Math.pow(10, passo);
+                setQtd(passo);
             }
         });
-        bm10.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                setQtd(-10);
+        qtd.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                    actionId == EditorInfo.IME_ACTION_DONE || event != null &&
+                    event.getAction() == KeyEvent.ACTION_DOWN &&
+                    event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    if (event == null || !event.isShiftPressed()) {
+                        // acabou de digitar, verifica se passou do limite
+                        setQtd(0);
+                        return false;
+                    }
+                }
+                return false; // passa pra frente
             }
         });
-        bp10.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                setQtd(10);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                int passo = (int) Math.pow(10, i);
+                bm.setText(String.format(getString(R.string.sb_menos), passo));
+                bp.setText(String.format(getString(R.string.sb_mais), passo));
+
+                // salvando passo
+                SharedPreferences.Editor editor = configs.edit();
+                editor.putInt("step", i);
+                editor.apply();
             }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
+    }
+
+    protected void aviso(int texto_id){
+        Toast toast = Toast.makeText(getApplicationContext(), texto_id, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, -100);
+        toast.show();
     }
 
     protected void sorteio(){
@@ -121,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     Thread.sleep(Float.valueOf(tempo * 1000).intValue());
                 } catch (Exception e) {
-                    System.out.print(e.getMessage());
+                    System.out.println(e.getMessage());
                 }
                 handler.post(new Runnable() {
                     @Override
@@ -141,7 +185,13 @@ public class MainActivity extends AppCompatActivity {
         if(txt.equals(""))
             qtde = configs.getInt("qtde", 0);
         else
-            qtde = Integer.parseInt(txt);
+            try {
+                qtde = Integer.parseInt(txt);
+            }
+            catch(Exception e){
+                qtde = LIMITE;
+                aviso(R.string.s_max);
+            }
         return qtde;
     }
 
@@ -151,6 +201,10 @@ public class MainActivity extends AppCompatActivity {
         novo = atual + valor;
         if(novo < 0)
             novo = 0;
+        else if(novo > LIMITE) {
+            novo = LIMITE;
+            aviso(R.string.s_max);
+        }
         qtd.setText(String.valueOf(novo));
         // salvando nas configurações
         SharedPreferences.Editor editor = configs.edit();

@@ -3,20 +3,28 @@
     <string name="sb_go">GO</string>
     <string name="s_aviso">O que você quer de mim, macaquinho estúpido?</string>
     <string name="s_min">Valor mínimo para sorteio: 2!</string>
+    <string name="s_max">Valor máximo para sorteio: 1 milhão!</string>
     <string name="sb_m1">-1</string>
     <string name="sb_p1">+1</string>
     <string name="sb_m10">-10</string>
     <string name="sb_p10">+10</string>
+    <string name="sb_mais">+%d</string>
+    <string name="sb_menos">-%d</string>
     <string name="zero">0</string>
     <string name="loading">Macaco tá pensando…</string>
     <string name="sobre">Sobre</string>
     <string name="configs">Opções</string>
     <string name="sobre_texto">
-        Versão 1.5
+        Versão 1.6
         \n\nEduardo Galvani Massino
         \n\nCursando Matemática Aplicada, no IME, na Universidade de São Paulo
     </string>
     <string name="sobre_changes">
+        \n\nMudanças na versão 1.6:
+        \n\t Criei um controle deslizante para alterar a potência de 10 que os botões alteram a quantidade;
+        \n\t Os botões agora são só 2 e mudam dinâmicamente de acordo com o controle deslizante;
+        \n\t Configurei um limite superior de 1 milhão para os sorteios.
+
         \n\nMudanças na versão 1.5:
         \n\t Criada tela de configurações:
         \n\t\t- Escolha do modelo de distribuição de probabilidade, Normal Padrão ou Uniforme Discreto;
