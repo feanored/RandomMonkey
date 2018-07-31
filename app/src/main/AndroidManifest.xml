@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.eduardo.brownianmonkey">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.eduardo.brownianmonkey"
+    android:versionCode="17"
+    android:versionName="@string/app_version"
+    tools:ignore="GradleOverrides">
 
     <application
         android:allowBackup="true"
@@ -8,7 +12,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="@xml/backup_descriptor">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SobreActivity" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
     </application>
 
 </manifest>

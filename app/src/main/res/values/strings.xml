@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Random Monkey</string>
+    <string name="app_version">1.7</string>
     <string name="sb_go">GO</string>
     <string name="s_aviso">O que você quer de mim, macaquinho estúpido?</string>
     <string name="s_min">Valor mínimo para sorteio: 2!</string>
@@ -15,14 +16,18 @@
     <string name="sobre">Sobre</string>
     <string name="configs">Opções</string>
     <string name="sobre_texto">
-        Versão 1.6
+        Versão 1.7
         \n\nEduardo Galvani Massino
         \n\nCursando Matemática Aplicada, no IME, na Universidade de São Paulo
     </string>
     <string name="sobre_changes">
+        \n\nMudanças na versão 1.7:
+        \n\t Adicionado um plano de fundo;
+        \n\t Pequenos ajustes visuais e de ortografia.
+
         \n\nMudanças na versão 1.6:
-        \n\t Criei um controle deslizante para alterar a potência de 10 que os botões alteram a quantidade;
-        \n\t Os botões agora são só 2 e mudam dinâmicamente de acordo com o controle deslizante;
+        \n\t Criado um controle deslizante para alterar a potência de 10 que os botões alteram a quantidade;
+        \n\t Os botões agora são só 2 e mudam dinamicamente de acordo com o controle deslizante;
         \n\t Configurei um limite superior de 1 milhão para os sorteios.
 
         \n\nMudanças na versão 1.5:
@@ -36,8 +41,8 @@
     </string>
     <string name="sobre_tip">Sobre Bogios e Sagüis</string>
     <string name="configs_tip">Are you an Ape?</string>
-    <string name="config_tipo">Distribuição de probabilidade</string>
-    <string name="config_tempo">Tempo para o macaco pensar</string>
+    <string name="config_tipo">Distribuição de probabilidade:</string>
+    <string name="config_tempo">Tempo para o macaco pensar:</string>
     <string name="config_tempo_valor">4 segundos</string>
     <string name="mod_unif">Uniforme Discreta</string>
     <string name="mod_normal">Normal Padrão</string>

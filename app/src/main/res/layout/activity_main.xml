@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="15dp"
+    android:padding="15dp"
+    android:background="@drawable/numbers"
     tools:context="com.eduardo.brownianmonkey.MainActivity">
 
     <TextView
@@ -64,7 +65,7 @@
         android:layout_width="84dp"
         android:layout_height="54dp"
         android:text="@string/sb_m1"
-        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/qtde"
         app:layout_constraintTop_toBottomOf="@id/qtde" />
 
     <Button

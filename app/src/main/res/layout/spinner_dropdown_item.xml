@@ -9,5 +9,6 @@
     android:gravity="start|center_vertical"
     android:ellipsize="marquee"
     android:textSize="16sp"
+    android:textStyle="bold|italic"
     android:textColor="@android:color/holo_red_light" />
 

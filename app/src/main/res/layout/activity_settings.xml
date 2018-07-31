@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="15dp"
+    android:padding="15dp"
+    android:background="@drawable/numbers"
     tools:context="com.eduardo.brownianmonkey.SettingsActivity">
 
     <TextView
@@ -14,7 +15,8 @@
         android:layout_height="wrap_content"
         android:text="@string/config_tipo"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@android:color/holo_blue_light"
+        android:textSize="19sp"
+        android:textColor="@android:color/holo_blue_dark"
         android:textStyle="bold|italic"/>
 
     <Spinner
@@ -38,7 +40,8 @@
         android:text="@string/config_tempo"
         app:layout_constraintRight_toLeftOf="@id/spinner"
         app:layout_constraintTop_toBottomOf="@id/spinner"
-        android:textColor="@android:color/holo_blue_light"
+        android:textSize="19sp"
+        android:textColor="@android:color/holo_blue_dark"
         android:textStyle="bold|italic"/>
 
     <TextView
@@ -52,6 +55,7 @@
         android:text="@string/config_tempo_valor"
         app:layout_constraintRight_toLeftOf="@id/txt_tempo"
         app:layout_constraintTop_toBottomOf="@id/txt_tempo"
+        android:textSize="16sp"
         android:textColor="@android:color/holo_red_light"
         android:textStyle="bold|italic"/>
 
